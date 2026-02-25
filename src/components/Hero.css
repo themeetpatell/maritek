@@ -79,6 +79,15 @@
   margin-top: 0.25rem;
 }
 
+.hero-tagline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1rem;
+  letter-spacing: 0.01em;
+}
+
 .hero-desc {
   font-family: var(--font-sans);
   font-size: 1.05rem;

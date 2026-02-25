@@ -48,6 +48,7 @@ export default function Hero() {
           <span className="hero-title-line">Your Trusted Partner for</span>
           <span className="hero-title-accent">Marine Solutions</span>
         </h1>
+        <p className="hero-tagline">Comprehensive Afloat Solutions</p>
         <p className="hero-desc">
           Maritek Solutions FZE LLC provides premium marine equipment, ship chandlering services,
           and comprehensive maritime solutions to vessels across the globe.
