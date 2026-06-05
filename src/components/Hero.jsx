@@ -45,8 +45,8 @@ export default function Hero() {
           Leading Marine Equipment Supplier in UAE
         </p>
         <h1 className="hero-title">
-          <span className="hero-title-line">Ultimate Solutions for</span>
-          <span className="hero-title-accent">Comprehensive Marine Services</span>
+          <span className="hero-title-line">Your Trusted Partner for</span>
+          <span className="hero-title-accent">Marine Solutions</span>
         </h1>
         <p className="hero-tagline">Comprehensive Afloat Solutions</p>
         <p className="hero-desc">
