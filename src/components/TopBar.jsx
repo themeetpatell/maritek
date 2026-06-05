@@ -19,7 +19,7 @@ export default function TopBar() {
           </a>
         </div>
         <div className="topbar-right">
-          Sharjah, United Arab Emirates | Serving Worldwide
+          Fujairah & Sharjah Branches | UAE, GCC & Middle East
         </div>
       </div>
     </div>
