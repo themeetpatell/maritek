@@ -1,0 +1,104 @@
+.page-banner {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--header-total) + 3rem) 0 3.5rem;
+  color: var(--white);
+  text-align: center;
+  background: var(--navy);
+}
+
+.page-banner-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59, 130, 217, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(45, 139, 168, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 45%, var(--navy-light) 100%);
+}
+
+.page-banner-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.6;
+}
+
+.page-banner-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-narrow);
+}
+
+.page-banner-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-accent-light);
+  margin-bottom: 1rem;
+  animation: bannerFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.page-banner-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  color: var(--white);
+  margin-bottom: 0.875rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  animation: bannerFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.page-banner-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 400;
+  animation: bannerFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.page-banner-line {
+  width: 48px;
+  height: 3px;
+  background: var(--blue-accent);
+  border-radius: 999px;
+  margin: 1.75rem auto 0;
+  animation: bannerLineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+@keyframes bannerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bannerLineGrow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-banner-label,
+  .page-banner-title,
+  .page-banner-subtitle,
+  .page-banner-line {
+    animation: none;
+  }
+}

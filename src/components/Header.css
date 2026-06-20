@@ -8,6 +8,12 @@
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--sand-dark);
+  overflow: visible;
+  transition: height 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-scrolled {
+  box-shadow: 0 2px 16px rgba(13, 59, 92, 0.08);
 }
 
 .header-inner {
@@ -16,6 +22,7 @@
   justify-content: space-between;
   height: 100%;
   gap: 1rem;
+  overflow: visible;
 }
 
 .logo {
@@ -31,20 +38,25 @@
 }
 
 .logo-img {
-  height: 96px;
+  height: 112px;
   width: auto;
-  min-width: 240px;
-  max-height: 100%;
+  min-width: 260px;
   display: block;
   object-fit: contain;
   object-position: left center;
+  transition: height 0.25s ease, min-width 0.25s ease, max-width 0.25s ease;
 }
 
 .nav-list {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
+}
+
+.nav-list a {
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .nav-list a {
@@ -57,22 +69,56 @@
   color: var(--navy-light);
 }
 
-.btn-nav {
-  padding: 0.6rem 1.35rem;
-  background: var(--blue-accent);
-  color: var(--white) !important;
-  border-radius: var(--radius);
+.nav-list a.nav-active {
+  color: var(--blue-accent);
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: background 0.2s;
 }
 
-.btn-nav:hover {
+.btn-nav {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-nav-email {
+  background: var(--blue-accent);
+  color: var(--white) !important;
+}
+
+.btn-nav-email:hover {
   background: var(--navy-light);
 }
 
-.btn-nav-desk {
+.btn-nav-whatsapp {
+  background: var(--whatsapp);
+  color: var(--white) !important;
+}
+
+.btn-nav-whatsapp:hover {
+  background: var(--whatsapp-dark);
+}
+
+.header-cta-desk {
   display: inline-flex;
+}
+
+.header-cta-mobile {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+}
+
+.btn-nav-desk {
+  display: none;
 }
 
 .btn-nav-mobile {
@@ -100,6 +146,10 @@
   transition: transform 0.3s;
 }
 
+.nav-mobile-contact {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .header-inner {
     gap: 0.5rem;
@@ -110,9 +160,9 @@
   }
 
   .logo-img {
-    height: 80px;
-    min-width: 160px;
-    max-width: 240px;
+    height: 52px;
+    min-width: 0;
+    max-width: min(180px, 52vw);
   }
 
   .nav {
@@ -134,6 +184,28 @@
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  .nav-mobile-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .nav-mobile-contact a {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--blue-accent);
+  }
+
+  .nav-mobile-contact span {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
 
   .nav-list {
@@ -160,17 +232,25 @@
     display: none;
   }
 
+  .header-cta-desk {
+    display: none;
+  }
+
   .nav-cta-wrap {
     display: block;
     border-bottom: none !important;
     padding-top: 0.75rem;
   }
 
-  .btn-nav-mobile {
-    display: inline-flex;
+  .header-cta-mobile {
+    display: flex;
+  }
+
+  .header-cta-mobile .btn-nav {
     width: 100%;
     justify-content: center;
-    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
   }
 
   .menu-toggle {
@@ -180,7 +260,7 @@
     margin: -10px -10px -10px 0;
   }
 
-  .nav-open + .btn-nav {
+  .nav-open + .header-cta-desk {
     display: none;
   }
 }

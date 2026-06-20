@@ -1,0 +1,37 @@
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-icon-link:hover {
+  background: var(--blue-accent);
+  transform: translateY(-2px);
+}
+
+.social-icons--contact .social-icon-link {
+  background: rgba(59, 130, 217, 0.1);
+  color: var(--blue-accent);
+}
+
+.social-icons--contact .social-icon-link:hover {
+  background: var(--blue-accent);
+  color: var(--white);
+}

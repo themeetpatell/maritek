@@ -29,7 +29,7 @@
   position: relative;
   z-index: 1;
   color: var(--white);
-  max-width: 640px;
+  max-width: var(--content-narrow);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -51,11 +51,7 @@
   background: rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   width: fit-content;
-}
-
-.hero-badge-icon {
-  display: flex;
-  color: var(--blue-accent-light);
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-title {
@@ -64,6 +60,49 @@
   color: var(--white);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.hero-desc {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.95;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-title,
+  .hero-desc,
+  .hero-cta {
+    animation: none;
+  }
+}
+
+.hero-badge-icon {
+  display: flex;
+  color: var(--blue-accent-light);
 }
 
 .hero-title-line {
@@ -79,64 +118,7 @@
   margin-top: 0.25rem;
 }
 
-.hero-tagline {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.92);
-  margin: 0 0 1rem;
-  letter-spacing: 0.01em;
-}
-
-.hero-desc {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 0.95;
-  margin-bottom: 1.25rem;
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.875rem 1.75rem;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  border-radius: var(--radius);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.btn-hero-primary {
-  background: var(--blue-accent);
-  color: var(--white);
-  border: none;
-}
-
-.btn-hero-outline {
-  background: var(--white);
-  color: var(--navy);
-  border: none;
-}
-
-.btn-hero-outline:hover {
-  background: var(--sand);
-  color: var(--navy);
-}
-
-/* Stats strip inside hero – tight to CTAs */
+/* Stats strip inside hero */
 .hero-stats {
   position: relative;
   z-index: 1;
@@ -233,7 +215,7 @@
     flex-direction: column;
   }
 
-  .btn {
+  .hero-cta .btn {
     width: 100%;
   }
 }

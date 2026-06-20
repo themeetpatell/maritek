@@ -1,37 +1,75 @@
-import { useState } from 'react'
-import { whatsappUrl } from '../lib/whatsapp'
+import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { sharedContact } from '../lib/branches'
+import { whatsappUrlForGeneralService } from '../lib/inquiryMessages'
 import './Header.css'
+
+function HeaderCTA({ className, onNavigate }) {
+  return (
+    <div className={`header-cta ${className || ''}`}>
+      <Link to="/contact" className="btn btn-nav btn-nav-email" onClick={onNavigate}>
+        Email Inquiry
+      </Link>
+      <a
+        href={whatsappUrlForGeneralService()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-nav btn-nav-whatsapp"
+        onClick={onNavigate}
+      >
+        WhatsApp
+      </a>
+    </div>
+  )
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const links = [
-    { href: '#', label: 'Home' },
-    { href: '#about', label: 'About Us' },
-    { href: '#services', label: 'Services' },
-    { href: '#categories', label: 'Products' },
-    { href: '#contact', label: 'Contact' },
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About Us' },
+    { to: '/services', label: 'Services' },
+    { to: '/products', label: 'Products' },
+    { to: '/faq', label: 'FAQ' },
+    { to: '/contact', label: 'Contact' },
   ]
 
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <header className="header">
+    <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
       <div className="header-inner container">
-        <a href="#" className="logo">
+        <Link to="/" className="logo" onClick={closeMenu}>
           <img src="/Maritek Logo.png" alt="Maritek Solutions" className="logo-img" />
-        </a>
+        </Link>
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
+          <div className="nav-mobile-contact">
+            <a href={sharedContact.phoneHref}>{sharedContact.phone}</a>
+            <span>{sharedContact.hours.days}, {sharedContact.hours.time}</span>
+          </div>
           <ul className="nav-list">
-            {links.map(({ href, label }) => (
-              <li key={href}>
-                <a href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+            {links.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink to={to} onClick={closeMenu} className={({ isActive }) => isActive ? 'nav-active' : ''}>
+                  {label}
+                </NavLink>
               </li>
             ))}
             <li className="nav-cta-wrap">
-              <a href={whatsappUrl("Hi, I would like to send an inquiry to Maritek Solutions.")} target="_blank" rel="noopener noreferrer" className="btn btn-nav btn-nav-mobile" onClick={() => setMenuOpen(false)}>Send Inquiry</a>
+              <HeaderCTA className="header-cta-mobile" onNavigate={closeMenu} />
             </li>
           </ul>
         </nav>
-        <a href={whatsappUrl("Hi, I would like to send an inquiry to Maritek Solutions.")} target="_blank" rel="noopener noreferrer" className="btn btn-nav btn-nav-desk">Send Inquiry</a>
+        <HeaderCTA className="header-cta-desk" onNavigate={closeMenu} />
         <button
           type="button"
           className="menu-toggle"

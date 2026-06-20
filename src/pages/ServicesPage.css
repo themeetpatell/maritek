@@ -1,0 +1,47 @@
+.services-page-section {
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.service-detail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.service-detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--icon-box-bg);
+  color: var(--icon-box-color);
+  border-radius: 10px;
+}
+
+.service-detail--urgent {
+  border-color: rgba(201, 162, 39, 0.35);
+}
+
+.service-detail--urgent .service-detail-number {
+  background: rgba(201, 162, 39, 0.15);
+  color: var(--accent);
+}
+
+.service-detail-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.service-detail .service-detail-number {
+  margin-bottom: 0;
+}
+
+.service-detail-list {
+  margin-bottom: 1rem;
+}
+
+.service-detail-list li {
+  font-size: 0.85rem;
+}

@@ -1,57 +1,66 @@
-import { whatsappUrl } from '../lib/whatsapp'
+import { Link } from 'react-router-dom'
+import ChevronRight from './ChevronRight'
+import InlineCTA from './InlineCTA'
+import { generalServiceInquiryMessage, whatsappUrlForService } from '../lib/inquiryMessages'
 import './Services.css'
 
 const services = [
   {
-    title: 'Ship Chandlering',
-    desc: 'Comprehensive ship supply services including provisions, cabin stores, and deck equipment for vessels of all types.',
-    icon: 'anchor',
+    slug: 'marine-spare-parts',
+    title: 'Marine Equipment and Spare Parts Supply',
+    desc: 'Supply of marine machinery parts, deck and engine consumables, hydraulic components, navigation and safety equipment.',
+    icon: 'ship',
   },
   {
-    title: 'Engine Store Supplies',
-    desc: 'High-quality engine room equipment, spare parts, lubricants, and technical supplies for optimal vessel performance.',
-    icon: 'wrench',
+    slug: 'oilfield-equipment',
+    title: 'Oilfield Equipment and Industrial Supply',
+    desc: 'Pumps, valves, piping materials, pipeline equipment, and industrial tools for the oil and gas and offshore sectors.',
+    icon: 'oil',
   },
   {
-    title: 'Safety Equipment',
-    desc: 'Complete range of maritime safety gear including lifesaving appliances, fire-fighting equipment, and protective wear.',
-    icon: 'shield',
+    slug: 'marine-consultancy',
+    title: 'Marine Consultancy and Technical Support',
+    desc: 'Expert advisory and technical guidance for marine and offshore operations, procurement strategy, and vendor selection.',
+    icon: 'consult',
   },
   {
-    title: 'Deck Store Equipment',
-    desc: 'Ropes, hawsers, anchoring equipment, mooring gear, and all essential deck supplies for maritime operations.',
-    icon: 'box',
+    slug: 'emergency-procurement',
+    title: 'Emergency Procurement Support',
+    desc: 'Fast-response sourcing for urgent operational needs. We have the network to deliver critical parts quickly when vessels or plants cannot wait.',
+    icon: 'emergency',
   },
   {
-    title: 'Marine Paints',
-    desc: 'Premium quality marine coatings, anti-fouling paints, and protective finishes from leading manufacturers.',
-    icon: 'paint',
+    slug: 'technical-sourcing',
+    title: 'Technical Sourcing and Vendor Coordination',
+    desc: 'We leverage our global supplier network to locate and procure specific components, including hard-to-find and OEM parts.',
+    icon: 'sourcing',
   },
   {
-    title: 'Technical Services',
-    desc: 'Expert technical support, equipment installation, and maintenance services for maritime equipment.',
-    icon: 'gear',
+    slug: 'pipeline-equipment',
+    title: 'Pipeline and Process Equipment Supply',
+    desc: 'Specialised procurement for plant shutdown and pipeline projects across the oil and gas and petrochemical sectors.',
+    icon: 'pipeline',
   },
 ]
 
 const iconMap = {
-  anchor: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+  ship: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-9-4 4-6-2 2 6 9 4a11.6 11.6 0 0 1-6 1.62z"/></svg>
   ),
-  wrench: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+  oil: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M12 22V12"/></svg>
   ),
-  shield: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  consult: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
   ),
-  box: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+  emergency: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
   ),
-  paint: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+  sourcing: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   ),
-  gear: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  pipeline: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12h16"/><path d="M4 8h8"/><path d="M4 16h12"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/></svg>
   ),
 }
 
@@ -59,22 +68,47 @@ export default function Services() {
   return (
     <section id="services" className="services">
       <div className="container">
+        <div className="section-block">
         <div className="section-header">
           <span className="section-tag">What We Provide</span>
-          <h2 className="section-title">Our Marine Services</h2>
+          <h2 className="section-title">End-to-End Supply and Support</h2>
           <p className="section-desc">
-            We offer a comprehensive range of marine equipment and services to meet all your maritime needs.
+            Spare parts, emergency procurement, oilfield equipment, technical sourcing, pipeline
+            supply, and expert consultancy — one partner for marine and oilfield operations across
+            the UAE and Middle East region.
           </p>
         </div>
         <div className="services-grid">
-          {services.map(({ title, desc, icon }) => (
-            <article key={title} className="service-card">
+          {services.map(({ slug, title, desc, icon }) => (
+            <article key={slug} className={`service-card${slug === 'emergency-procurement' ? ' service-card--urgent' : ''}`}>
               <div className="service-icon">{iconMap[icon]}</div>
               <h3 className="service-title">{title}</h3>
               <p className="service-desc">{desc}</p>
-              <a href={whatsappUrl(`Hi, I'm interested in ${title}. Please share more information.`)} target="_blank" rel="noopener noreferrer" className="service-link">Learn More <span className="service-arrow">&gt;</span></a>
+              <Link to={`/services#${slug}`} className="service-link">
+                Learn more
+                <ChevronRight size={16} />
+              </Link>
+              {slug === 'emergency-procurement' && (
+                <a
+                  href={whatsappUrlForService(slug)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="service-link service-link-urgent"
+                >
+                  Request urgent support
+                  <ChevronRight size={16} />
+                </a>
+              )}
             </article>
           ))}
+        </div>
+        <InlineCTA
+          title="Need a specific service?"
+          description="Send your requirement on WhatsApp and we'll confirm scope, lead time, and pricing promptly."
+          buttonLabel="Chat on WhatsApp"
+          whatsappMessage={generalServiceInquiryMessage()}
+          variant="light"
+        />
         </div>
       </div>
     </section>
