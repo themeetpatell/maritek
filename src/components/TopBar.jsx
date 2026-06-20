@@ -18,9 +18,6 @@ export default function TopBar() {
             admin@maritekuae.com
           </a>
         </div>
-        <div className="topbar-right">
-          Fujairah & Sharjah Branches | UAE, GCC & Middle East
-        </div>
       </div>
     </div>
   )

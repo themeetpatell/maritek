@@ -1,0 +1,33 @@
+.company-intro {
+  background: var(--white);
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-bottom: 1px solid var(--sand-dark);
+}
+
+.company-intro-inner {
+  max-width: 820px;
+  text-align: center;
+}
+
+.company-intro-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.company-intro-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--blue-accent);
+  transition: color 0.2s;
+}
+
+.company-intro-link:hover {
+  color: var(--navy-light);
+}
