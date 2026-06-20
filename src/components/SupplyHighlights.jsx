@@ -77,7 +77,7 @@ export default function SupplyHighlights() {
               {productCategories.map(({ shortTitle, slug, desc, icon, image }) => (
                 <Link key={slug} to={`/products#${slug}`} className="supply-highlight-card">
                   <div className="supply-highlight-image-wrap">
-                    <img src={image} alt="" className="supply-highlight-image" loading="lazy" />
+                    <img src={image} alt={shortTitle} className="supply-highlight-image" loading="lazy" />
                     <span className="supply-highlight-icon">{categoryIconMap[icon]}</span>
                   </div>
                   <div className="supply-highlight-body">

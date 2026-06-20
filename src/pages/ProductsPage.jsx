@@ -34,7 +34,7 @@ export default function ProductsPage() {
               <AnimateIn key={title} delay={i * 40}>
                 <div id={slug} className="product-category-block product-category-anchor">
                   <div className="product-category-image-wrap">
-                    <img src={image} alt="" className="product-category-image" loading="lazy" />
+                    <img src={image} alt={title} className="product-category-image" loading="lazy" />
                   </div>
                   <div className="product-category-head">
                     <span className="product-category-icon">{categoryIconMap[icon]}</span>

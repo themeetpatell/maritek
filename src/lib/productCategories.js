@@ -4,7 +4,7 @@ export const productCategories = [
     shortTitle: 'Marine Machinery Spares',
     slug: 'marine-machinery-spare-parts',
     icon: 'gear',
-    image: '/categories/marine-spares.jpg',
+    image: '/categories/marine-engine-spare-parts.jpg',
     desc: 'Engine parts, pumps, seals, and OEM components for vessels.',
     items: [
       'Main engine and auxiliary engine parts',
@@ -22,7 +22,7 @@ export const productCategories = [
     shortTitle: 'Deck and Engine Consumables',
     slug: 'deck-engine-consumables',
     icon: 'anchor',
-    image: '/categories/marine-spares.jpg',
+    image: '/categories/deck-and-engine.jpg',
     desc: 'Lubricants, chemicals, mooring materials, and maintenance kits.',
     items: [
       'Lubricating oils and greases',
@@ -39,7 +39,7 @@ export const productCategories = [
     shortTitle: 'Pumps, Valves and Piping',
     slug: 'pumps-valves-piping',
     icon: 'valve',
-    image: '/categories/pumps-valves.jpg',
+    image: '/categories/pupmb-valves.jpeg',
     desc: 'Centrifugal pumps, industrial valves, flanges, and fittings.',
     items: [
       'Centrifugal and reciprocating pumps',
@@ -55,7 +55,7 @@ export const productCategories = [
     shortTitle: 'Electrical and Automation',
     slug: 'electrical-automation',
     icon: 'bolt',
-    image: '/categories/electrical.jpg',
+    image: '/categories/electrical-and-automation.png',
     desc: 'Switchgear, cables, sensors, and marine-grade electrical parts.',
     items: [
       'Circuit breakers and switchgear',
@@ -71,7 +71,7 @@ export const productCategories = [
     shortTitle: 'Navigation and Communication',
     slug: 'navigation-communication',
     icon: 'compass',
-    image: '/categories/safety.jpg',
+    image: '/categories/navigational-and-communication.jpg',
     desc: 'GPS, AIS, VHF radios, radar systems, and navigation spares.',
     items: [
       'GPS and chart plotting systems',
@@ -87,7 +87,7 @@ export const productCategories = [
     shortTitle: 'Safety and Firefighting',
     slug: 'safety-firefighting',
     icon: 'shield',
-    image: '/categories/safety.jpg',
+    image: '/categories/marine-fire-protection-maintenence.png',
     desc: 'Life-saving appliances, fire systems, and PPE for marine use.',
     items: [
       'Life jackets and immersion suits',
@@ -104,7 +104,7 @@ export const productCategories = [
     shortTitle: 'Hydraulic and Pneumatic',
     slug: 'hydraulic-pneumatic',
     icon: 'hydraulic',
-    image: '/categories/pumps-valves.jpg',
+    image: '/categories/Pneumatic-and-Hydraulic-Products-600x300-1.jpg',
     desc: 'Pumps, cylinders, hoses, actuators, and repair kits.',
     items: [
       'Hydraulic pumps and motors',
@@ -121,7 +121,7 @@ export const productCategories = [
     shortTitle: 'Industrial Tools',
     slug: 'industrial-tools',
     icon: 'wrench',
-    image: '/categories/electrical.jpg',
+    image: '/categories/industrial-tools.jpg',
     desc: 'Hand tools, measuring instruments, lifting equipment, and fasteners.',
     items: [
       'Hand tools and power tools',
